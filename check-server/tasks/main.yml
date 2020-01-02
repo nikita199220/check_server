@@ -1,9 +1,9 @@
 - name: Check that the somefile.conf exists
   stat:
-    path: /etc/test.txt
+    path: /etc/test
   register: stat_result
 
-- name: Create the file, if it doesnt exist already
+- name: Status of file
   debug:
     msg: "File is not present"
   when: stat_result.stat.exists == False 
