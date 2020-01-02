@@ -1,14 +1,9 @@
----
-# tasks file for check-server
-- name: Gather the rpm package facts
-  package_facts:
-    manager: auto
+- name: Check that the somefile.conf exists
+  stat:
+    path: /etc/test.txt
+  register: stat_result
 
-- name: Print the rpm package facts
+- name: Create the file, if it doesnt exist already
   debug:
-    var: ansible_facts.packages
-
-- name: Check whether a package called vim is installed
-  debug:
-    msg: "{{ ansible_facts.packages['vim'] | length }} versions of vim are installed!"
-  when: "'vim' in ansible_facts.packages"
+    msg: "File is not present"
+  when: stat_result.stat.exists == False 
