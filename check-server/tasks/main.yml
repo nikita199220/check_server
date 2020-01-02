@@ -8,7 +8,7 @@
   debug:
     var: ansible_facts.packages
 
-- name: Check whether a package called foobar is installed
+- name: Check whether a package called vim is installed
   debug:
-    msg: "{{ ansible_facts.packages['vim'] | length }} versions of foobar are installed!"
+    msg: "{{ ansible_facts.packages['vim'] | length }} versions of vim are installed!"
   when: "'vim' in ansible_facts.packages"
