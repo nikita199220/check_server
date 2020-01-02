@@ -1,0 +1,14 @@
+---
+# tasks file for check-server
+- name: Gather the rpm package facts
+  package_facts:
+    manager: auto
+
+- name: Print the rpm package facts
+  debug:
+    var: ansible_facts.packages
+
+- name: Check whether a package called foobar is installed
+  debug:
+    msg: "{{ ansible_facts.packages['vim'] | length }} versions of foobar are installed!"
+  when: "'vim' in ansible_facts.packages"

@@ -1,0 +1,7 @@
+---
+- name: Create ticket with notes
+  hosts: localhost
+# connection: localhost
+  gather_facts: yes
+  roles:
+    - check-server
